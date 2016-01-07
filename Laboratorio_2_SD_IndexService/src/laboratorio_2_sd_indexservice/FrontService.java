@@ -34,7 +34,7 @@ public class FrontService {
     static String fromClient;
     static String processedData; 
         
-    public FrontService(int sizeIndex,int nHebras) {
+    public FrontService(int nHebras) {
         this.nHebras=nHebras;
         this.HebraActual=0;
         this.t=new Thread[nHebras];
@@ -111,11 +111,9 @@ public class FrontService {
             FileReader fr = new FileReader (archivo);
             BufferedReader br = new BufferedReader(fr);
             String linea = br.readLine();
-            String[] parametros=linea.split(" ");
             FrontService buscador=new FrontService(
-                    Integer.parseInt(parametros[1]),
-                    Integer.parseInt(parametros[2]));
-            
+                    Integer.parseInt(linea));
+        
             while(true){
 
                 //Recibimos el dato del cliente y lo mostramos en el server
